@@ -13,7 +13,8 @@ public class SecurityTestConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .anyRequest().authenticated();
+                .antMatchers("/user").hasRole("USER")
+                .anyRequest().permitAll();
 
         http
                 .formLogin();
